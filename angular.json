@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-scroll-animations"
+    }
+  },
+  "defaultProject": "ng-scroll-animations",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,1 +1,219 @@
 /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: inherit;
+  position: relative;
+  background-color: #fafafa;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.main {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(100px, 1fr) [center-start] repeat(
+      12,
+      [col-start] minmax(min-content, 120px) [col-end]
+    )
+    [center-end] minmax(100px, 1fr) [full-end];
+  grid-template-rows: min-content calc(100vh - 120px) 100vh;
+}
+
+.header {
+  border-right: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+  grid-column: center-start / center-end;
+  grid-row: 1 / 2;
+  display: grid;
+  height: 120px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.first-section {
+  border-right: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+  grid-column: center-start / center-end;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  position: relative;
+}
+.second-section {
+  padding: 0 20px;
+  border-right: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+  grid-column: center-start / center-end;
+  grid-row: 3 / 4;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, min-content);
+  grid-gap: 20px;
+  .box {
+    width: 600px;
+    height: 500px;
+    background-color: #fff;
+    position: absolute;
+    right: -15%;
+    z-index: -1;
+  }
+
+  .heading-4 {
+    margin-top: 10px;
+    grid-row: 1/2;
+    grid-column: 1/-1;
+    justify-self: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a8a8a8;
+    font-size: 15px;
+  }
+
+  .heading-1 {
+    grid-row: 2 / 3;
+    grid-column: 3 / 7;
+    justify-self: center;
+    font-size: 40px;
+    font-weight: 500;
+  }
+
+  .info-1 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, min-content);
+    grid-row: 4 / -1;
+    grid-column: 1 / -1;
+    grid-gap: 20px;
+    position: relative;
+
+    &__text {
+      grid-row: 1 / -1;
+      grid-column: 1 / 5;
+      display: grid;
+      grid-template-rows: repeat(6, min-content);
+      grid-gap: 25px;
+
+      span.quote {
+        font-size: 120px;
+        transform: translateY(80px);
+      }
+
+      .heading-3 {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+        font-size: 36px;
+        font-weight: 500;
+      }
+
+      p.paragraph {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.7;
+        grid-row: 3 / 4;
+        width: 75%;
+      }
+    }
+
+    &__visual {
+      grid-column: 5/-1;
+      grid-row: 1/-1;
+      height: 500px;
+      margin-right: 20px;
+      overflow: hidden;
+    }
+  }
+}
+
+.menu {
+  grid-row: 1 / 2;
+  grid-column: 1 / 3;
+  list-style: none;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(170px, min-content));
+
+  &__item {
+    padding: 15px 20px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+  }
+}
+.menu-right {
+  grid-row: 1 / 2;
+  grid-column: 3 / -1;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.visuals {
+  grid-column: 3/-1;
+  grid-row: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 30px;
+  padding: 30px;
+
+  .image-container {
+    overflow: hidden;
+  }
+
+  .image-container:nth-child(1) {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+  }
+  .image-container:nth-child(2) {
+    grid-column: 4 / 8;
+    grid-row: 1 / 5;
+  }
+}
+
+.info {
+  position: absolute;
+  z-index: 20;
+  top: 20%;
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  margin-left: 20px;
+
+  h1.heading-1 {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    font-size: 60px;
+    font-weight: 600;
+  }
+
+  p.paragraph {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+  }
+
+  a.btn--start {
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
+  }
+}
